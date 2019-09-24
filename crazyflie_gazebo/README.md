@@ -10,7 +10,7 @@ First, always starts with the script that will start gazebo. In this case it wil
 
 #### First start gazebo with a launch file similar as above
 
-The launch files are simple to understand : [Gazebo](https://github.com/wuwushrek/sim_cf/blob/850133dbc854de9b04328bde99e39ac1435c00e0/crazyflie_gazebo/launch/max_cf_sitl.launch#L82-L95) is first launched with the appropriate world_name then you spawn [as much crazyflie](https://github.com/wuwushrek/sim_cf/blob/850133dbc854de9b04328bde99e39ac1435c00e0/crazyflie_gazebo/launch/max_cf_sitl.launch#L98-L187) object as you can. Make sure that the prefix are indexed correctly. WE need that order when we will launch the handler plugin.
+The launch files are simple to understand : [Gazebo](https://github.com/wuwushrek/sim_cf/blob/850133dbc854de9b04328bde99e39ac1435c00e0/crazyflie_gazebo/launch/max_cf_sitl.launch#L82-L95) is first launched with the appropriate world_name then you spawn [as much crazylfie](https://github.com/wuwushrek/sim_cf/blob/850133dbc854de9b04328bde99e39ac1435c00e0/crazyflie_gazebo/launch/max_cf_sitl.launch#L98-L187) object as you can. Make sure that the prefix are indexed correctly. WE need that order when we will launch the handler plugin.
 
 Finally partitionned the crazyflie to different [handlers](https://github.com/wuwushrek/sim_cf/blob/850133dbc854de9b04328bde99e39ac1435c00e0/crazyflie_gazebo/launch/max_cf_sitl.launch#L190-L231) (if there is too much crazyflies). For example in the ```max_cf_sitl.launch``` we gave 4 crazyflies to the hanlder1 and those crazyflies are supposed to communicate via port 19950. the 3 others crazyflies are given to handler2 over port 19951. Then roslaunch them (for a single crazyflie):
 ```sh
@@ -34,7 +34,7 @@ cd ~/catkin_ws/src/sim_cf/crazyflie_gazebo/scripts
 ./run_cfs 4 19950
 ./run_cfs 3 19951
 ```
-[IMPORTANT] Then press PLAY button in gazebo and when ```GYro Bias found``` is printed in the console where the crazyflie has been launched : you are done. you can start executing high level script.
+[IMPORTANT] Then press PLAY button in gazebo and when ```gyrobias found``` is printed in the console where the crazylfie has been launched : you are done. you can start executing high level script.
 
 #### Kill every crazyflie instances that has been created by run_cfs
 This is useful before starting any simulation (launching gazebo)
@@ -43,16 +43,16 @@ cd ~/catkin_ws/src/sim_cf/crazyflie_gazebo/scripts
 ./terminate_cfs
 ```
 ### Start simulation in HITL mode
-[IMPORTANT] the crazyflie_firmware must been compiled in HITL mode and must have been flash inside the crazyflie as explained [here](https://github.com/wuwushrek/sim_cf#compilation-in-hitl-mode). Once this is done, turn on the crazyflie and be sure that it can communicate with the computer over USB or Radio.
+[IMPORTANT] the crazyflie_firmware must been compiled in HITL mode and must have been flash inside the crazylfie as explained [here](https://github.com/wuwushrek/sim_cf#compilation-in-hitl-mode). Once this is done, turn on the crazylfie and be sure that it can communicate with the computer over USB or Radio.
 When using USB for HITL simulation with a single crazyflie connected :
 ```sh
 roslaunch crazyflie_gazebo crazyflie_sim.launch uri:=usb://0
 ```
-When using Radio with a single crazyflie connected :
+When using Radio with a single crazylfie connected :
 ```sh
 roslaunch crazyflie_gazebo crazyflie_sim.launch uri:=radio://0/80/250K
 ```
-Just note that in HITL with USB, a handler can only take in accound ONE crazyflie. So build your launch file using that information.
+Just note that in HITL with USB, a handler can only take in accound ONE crazylfie. So build your launch file using that information.
 
 Then when the parameters and log have been found, press PLAY button in the gazebo engine to be able to start launching high level scripts. You should received a ```gyro bias found``` indicating that you can start playing around.
 
@@ -63,9 +63,9 @@ The two sections [here](https://github.com/wuwushrek/sim_cf#how-to-use-high-leve
 The ghosts can also be added once gazebo has started if you want to visualize target_position topics.
 
 ### Using a joystick in simulation
-When the gyrobias message has been received, you can use a joystick to control the crazyflie. This can be done by typing this in a console:
+When the gyrobias message has been received, you can use a joystick to control the crazylfie. This can be done by typing this in a console:
 ```sh
-roslaunch crazyflie_gazebo joy_launch.launch cfPrefix:=cf1 positionTopic:=local_position 
+roslaunch crazylfie_gazebo joy_launch.launch cfPrefix:=cf1 positionTopic:=local_position 
 ```
 Then FIRST press start button to 'arm motor' and then be technically able to use the joystick to control the crazyflie :
 * Start : Arm the motors -> Always required after launching the node
